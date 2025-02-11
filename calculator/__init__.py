@@ -1,15 +1,21 @@
-def add(a,b):
-    return a + b
+from calculator.CalcOperations import *
+from calculator.CalcConstructor import *
 
-def subtract(a,b):
-    return a - b
-
-def multiply(a,b):
-    return a * b
-
-def divide(a,b):
-    try:
-        return a/b
-    except ZeroDivisionError:
-        return "Error : Division by zero"
+class Calculator:
+    @staticmethod
+    def add(a,b):
+        calcConstructor = CalcConstructor(a,b,add)
+        return calcConstructor.get_result()
+    @staticmethod
+    def subtract(a,b):
+        calcConstructor = CalcConstructor(a,b,subtract)
+        return calcConstructor.get_result()
+    @staticmethod
+    def multiply(a,b):
+        calcConstructor = CalcConstructor(a,b,multiply)
+        return calcConstructor.get_result()
+    @staticmethod
+    def divide(a,b):
+        calcConstructor = CalcConstructor(a,b,divide)
+        return calcConstructor.get_result()
     
