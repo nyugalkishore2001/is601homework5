@@ -1,4 +1,15 @@
-"Calculator Functionality"
 def add(a,b):
-    "returns the value of a+b"
-    return a+b
+    return a + b
+
+def subtract(a,b):
+    return a - b
+
+def multiply(a,b):
+    return a * b
+
+def divide(a,b):
+    try:
+        return a/b
+    except ZeroDivisionError:
+        return "Error : Division by zero"
+    
