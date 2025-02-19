@@ -1,23 +1,12 @@
 from decimal import Decimal
 import pytest
 from calculator.calculation import Calculation
-from calculator.operations import add, subtract, multiply, divide
+from calculator.operations import divide
 
-def test_operation_add():
-    calculation = Calculation(Decimal('10'), Decimal('5'), add)
-    assert calculation.perform() == Decimal('15')
+def test_operation(a, b, operation, expected):
+    calculation = Calculation.create(a,b,operation)
+    assert calculation.perform() == expected, f"{operation.__name__} operation unsucessfull"
 
-def test_operation_subtract():
-    calculation = Calculation(Decimal('10'), Decimal('5'), subtract)
-    assert calculation.perform() == Decimal('5')
-
-def test_operation_multiply():
-    calculation = Calculation(Decimal('10'), Decimal('5'), multiply)
-    assert calculation.perform() == Decimal('50')
-
-def test_operation_divide():
-    calculation = Calculation(Decimal('10'), Decimal('5'), divide)
-    assert calculation.perform() == Decimal('2')
 
 def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
