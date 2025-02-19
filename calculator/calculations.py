@@ -1,28 +1,28 @@
-from typing import List
-from calculator.CalcConstructor import CalcConstructor
+from decimal import Decimal
+from typing import Callable, List
+from calculator.calculation import Calculation
 
-class ClacFunctions:
-    calcHistory : List[CalcConstructor]=[] 
-
-    @classmethod
-    def add_calcoperation(cls, calcConstructor : CalcConstructor):
-        cls.calcHistory.append(calcConstructor) 
+class Calculations:
+    history: List[Calculation] = []
 
     @classmethod
-    def get_history(cls) -> List[CalcConstructor]:
-        return cls.calcHistory
+    def add_calculation(cls, calculation: Calculation):
+        cls.history.append(calculation)
+
+    @classmethod
+    def get_history(cls) -> List[Calculation]:
+        return cls.history
 
     @classmethod
     def clear_history(cls):
-        cls.calcHistory.clear
+        cls.history.clear()
 
     @classmethod
-    def get_latest(cls):
-        if cls.calcHistory:
-            return cls.calcHistory[-1]
+    def get_latest(cls) -> Calculation:
+        if cls.history:
+            return cls.history[-1]
         return None
 
     @classmethod
-    def find_by_operation(cls, operation_name: str ) -> List[CalcConstructor]:
-        return [calc for calc in cls.calcHistory if calc.operation.__name__ == operation_name]  
-        
+    def find_by_operation(cls, operation_name: str) -> List[Calculation]:
+        return [calc for calc in cls.history if calc.operation.__name__ == operation_name]
