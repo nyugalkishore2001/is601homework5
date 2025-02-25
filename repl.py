@@ -4,9 +4,7 @@ from calculator.operations import add, subtract, multiply, divide
 from calculator.calculation import Calculation
 
 def get_number(prompt: str) -> Decimal:
-    """
-    Prompt the user for a number and return it as a Decimal.
-    """
+    
     while True:
         try:
             return Decimal(input(prompt))
@@ -14,9 +12,7 @@ def get_number(prompt: str) -> Decimal:
             print("Invalid input. Please enter a valid number.")
 
 def display_history():
-    """
-    Display the calculation history.
-    """
+   
     history = Calculations.get_history()
     if not history:
         print("No history available.")
@@ -40,9 +36,7 @@ def display_history():
             print(f"{i}. {calc.a} {calc.operation.__name__} {calc.b} = Error: {e}")
 
 def display_menu():
-    """
-    Display the main menu options.
-    """
+    
     print("\nCalculator Menu:")
     print("1. Add")
     print("2. Subtract")
@@ -53,9 +47,7 @@ def display_menu():
     print("7. Exit")
 
 def start_repl():
-    """
-    Start the REPL (Read-Eval-Print Loop) for the calculator.
-    """
+    
     print("Welcome to the Calculator REPL. Choose an operation from the menu.")
 
     while True:
