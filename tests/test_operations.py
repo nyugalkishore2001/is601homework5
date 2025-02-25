@@ -1,14 +1,19 @@
 from decimal import Decimal
 import pytest
-from calculator.calculation import Calculation
-from calculator.operations import divide
+from calculator.operations import add, subtract, multiply, divide
 
-def test_operation(a, b, operation, expected):
-    calculation = Calculation.create(a,b,operation)
-    assert calculation.perform() == expected, f"{operation.__name__} operation unsucessfull"
+def test_add():
+    assert add(Decimal('2'), Decimal('3')) == Decimal('5')
 
+def test_subtract():
+    assert subtract(Decimal('5'), Decimal('3')) == Decimal('2')
+
+def test_multiply():
+    assert multiply(Decimal('2'), Decimal('3')) == Decimal('6')
+
+def test_divide():
+    assert divide(Decimal('6'), Decimal('3')) == Decimal('2')
 
 def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
-        calculation = Calculation(Decimal('10'), Decimal('0'), divide)
-        calculation.perform()
+        divide(Decimal('6'), Decimal('0'))
