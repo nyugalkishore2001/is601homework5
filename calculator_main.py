@@ -31,7 +31,7 @@ def main():
         sys.exit(1)
     
     _, a, b, operation = sys.argv
-    calculate_and_print(a, b, operation)
+    compute_and_display(a, b, operation)
 
 if __name__ == '__main__':
     main()

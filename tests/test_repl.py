@@ -4,7 +4,7 @@ from io import StringIO
 from repl import start_repl
 
 def test_repl_add(monkeypatch, capsys):
-    inputs = ["1", "2", "3", "7"]  # Add 2 + 3, then exit
+    inputs = ["1", "2", "3", "7"]  
     monkeypatch.setattr('builtins.input', lambda _: inputs.pop(0))
     
     start_repl()
@@ -13,7 +13,7 @@ def test_repl_add(monkeypatch, capsys):
     assert "The result of 2 + 3 is: 5" in captured.out
 
 def test_repl_view_history(monkeypatch, capsys):
-    inputs = ["1", "2", "3", "5", "7"]  # Add 2 + 3, view history, then exit
+    inputs = ["1", "2", "3", "5", "7"]  
     monkeypatch.setattr('builtins.input', lambda _: inputs.pop(0))
     
     start_repl()
@@ -23,7 +23,7 @@ def test_repl_view_history(monkeypatch, capsys):
     assert "2 + 3 = 5" in captured.out
 
 def test_repl_clear_history(monkeypatch, capsys):
-    inputs = ["1", "2", "3", "6", "5", "7"]  # Add 2 + 3, clear history, view history, then exit
+    inputs = ["1", "2", "3", "6", "5", "7"]  
     monkeypatch.setattr('builtins.input', lambda _: inputs.pop(0))
     
     start_repl()
@@ -33,7 +33,7 @@ def test_repl_clear_history(monkeypatch, capsys):
     assert "No history available." in captured.out
 
 def test_repl_exit(monkeypatch, capsys):
-    inputs = ["7"]  # Exit immediately
+    inputs = ["7"]  
     monkeypatch.setattr('builtins.input', lambda _: inputs.pop(0))
     
     start_repl()
